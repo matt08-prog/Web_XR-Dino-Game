@@ -1,0 +1,14 @@
+{
+  "name": "base_p5.js_server",
+  "version": "1.0.0",
+  "description": "base_server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Roloff",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

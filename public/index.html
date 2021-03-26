@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>The Backrooms</title>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <!--favicons -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <!-- end favicon -->
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+	</head>
+	<body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="./libs/fas.js"></script>
+        <script src ="./simplexNoise.js"></script>
+        <script type="module">
+            import { App } from './app.js';
+
+            document.addEventListener("DOMContentLoaded", function(){
+                const app = new App()
+                window.app = app;
+            });
+        </script>
+	</body>
+</html>
