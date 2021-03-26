@@ -2,6 +2,7 @@ import * as THREE from './libs/three/three.module.js';
 import { VRButton } from './libs/VRButton.js';
 import { BoxLineGeometry } from './libs/three/jsm/BoxLineGeometry.js';
 import { GLTFLoader } from './libs/three/jsm/GLTFLoader.js';
+import { FBXLoader} from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/FBXLoader.js'
 import { Stats } from './libs/stats.module.js';
 import { OrbitControls } from './libs/three/jsm/OrbitControls.js';
 import { SpotLightVolumetricMaterial } from './libs/SpotLightVolumetricMaterial.js';
@@ -88,6 +89,19 @@ class App{
             const far = 75;
             this.scene.fog = new THREE.Fog(color, near, far);
         }
+        loadFBX()
+    }
+
+    loadFBX(){
+        const loader = new FBXLoader()
+        loader.setPath('.Assets/')
+        loader.load('Cactus.fbx', (fbx) => {
+            fbx.scale.setScalar(0.1)
+            fbx.traverse(c => {
+                c.castShadow = true
+            })
+            console.log("loaded")
+        })
     }
 
     //{"trigger":{"button":0},"touchpad":{"button":2,"xAxis":0,"yAxis":1}},"squeeze":{"button":1},"thumbstick":{"button":3,"xAxis":2,"yAxis":3},"button":{"button":6}}}
