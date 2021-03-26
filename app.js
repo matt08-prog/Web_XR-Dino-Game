@@ -27,7 +27,6 @@ class App{
         this.dolly = new THREE.Object3D()
         this.dolly.position.set(0,0.6,0)
         this.orbitOrigin.position.set(0,0,0)
-        // this.FOV = 10
         this.FOV = 50
 		this.camera = new THREE.PerspectiveCamera( this.FOV, window.innerWidth / window.innerHeight, 0.01, 10000 );
         this.camera.updateProjectionMatrix()
