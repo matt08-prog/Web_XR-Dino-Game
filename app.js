@@ -101,6 +101,7 @@ class App{
                 c.castShadow = true
             })
             console.log("loaded")
+            this.scene.add(fbx)
         })
     }
 
