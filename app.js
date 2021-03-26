@@ -94,7 +94,7 @@ class App{
 
     loadFBX(){
         const loader = new FBXLoader()
-        loader.setPath('.Assets/')
+        loader.setPath('Assets/')
         loader.load('Cactus.fbx', (fbx) => {
             fbx.scale.setScalar(0.1)
             fbx.traverse(c => {
