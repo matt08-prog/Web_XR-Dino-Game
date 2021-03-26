@@ -89,7 +89,7 @@ class App{
             const far = 75;
             this.scene.fog = new THREE.Fog(color, near, far);
         }
-        loadFBX()
+        this.loadFBX()
     }
 
     loadFBX(){
