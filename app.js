@@ -383,20 +383,20 @@ class App{
                         
                         if ( inputSource.handedness == 'right'){
                             if(gp.axes[offset] > 0) {
-                               this.player.pos = 1
+                               this.player.zPos = 1
                             } else if (gp.axes[offset] < 0) {
-                                this.player.pos = -1
+                                this.player.zPos = -1
                             } else {
-                                this.player.pos = 0
+                                this.player.zPos = 0
                             }
                             this.handleInput(this.controllers.right.controller)
                         }else if ( inputSource.handedness == 'left'){
                             if(gp.axes[offset] > 0) {
-                                this.player.pos = 5
+                                this.player.zPos = 5
                              } else if (gp.axes[offset] < 0) {
-                                 this.player.pos = -5
+                                 this.player.zPos = -5
                              } else {
-                                 this.player.pos = 0
+                                 this.player.zPos = 0
                              }
                         }
                     }
