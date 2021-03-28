@@ -382,6 +382,8 @@ class App{
                         const btnPressed = gp.buttons[btnIndex].pressed;
                         
                         if ( inputSource.handedness == 'right'){
+                            console.log("right")
+                            console.log(gp.axes[offset])
                             if(gp.axes[offset] > 0) {
                                this.player.zPos = 1
                             } else if (gp.axes[offset] < 0) {
@@ -391,6 +393,8 @@ class App{
                             }
                             this.handleInput(this.controllers.right.controller)
                         }else if ( inputSource.handedness == 'left'){
+                            console.log("left")
+                            console.log(gp.axes[offset])
                             if(gp.axes[offset] > 0) {
                                 this.player.zPos = 5
                              } else if (gp.axes[offset] < 0) {
