@@ -2,8 +2,11 @@ import * as THREE from './libs/three/three.module.js';
 //import {openSimplexNoise} from './simplexNoise.js'
 
 class Terrain {
-    constructor(scene) {
+    constructor(scene, cactus, pterodactyl, clock) {
         this.scene = scene
+        this.cactus = cactus
+        this.pterodactyl = pterodactyl
+        this.clock = clock
         this.initScene()
     }
 
@@ -17,7 +20,16 @@ class Terrain {
         this.groupB = new THREE.Group();
         this.groupC = new THREE.Group();
         this.groupD = new THREE.Group();
+        this.groups = []
+        this.mixers = []
+
+        this.groups.push(this.groupA)
+        this.groups.push(this.groupB)
+        this.groups.push(this.groupC)
+        this.groups.push(this.groupD)
+
         this.backTile = this.groupA
+        this.spawnerPositions = [-5,0,5]
 
         const seed = Date.now()
         this.openSimplex = openSimplexNoise(seed);
@@ -30,16 +42,7 @@ class Terrain {
         this.background = true
         this.BuildFloor()
         self = this
-        console.log(this.frequency)
-
-
-        // setInterval(function() {
-        //     self.frequency += 1
-        //     console.log(self.frequency)
-        //     self.scene.remove(self.plane)
-        //     self.changeTerrain()
-        //     self.BuildTerrain()
-        // }, 1000)
+        this.index = 0
     }
 
     BuildTerrain(geometry){
@@ -75,6 +78,7 @@ class Terrain {
             this.groupB.add(plane.clone())
             this.groupB.add(secondPlane.clone())
             this.groupB.position.x += this.width * 1
+            this.groupB.scale.x *= -1
 
             this.groupC.add(plane.clone())
             this.groupC.add(secondPlane.clone())
@@ -83,6 +87,7 @@ class Terrain {
             this.groupD.add(plane.clone())
             this.groupD.add(secondPlane.clone())
             this.groupD.position.x += this.width * 3
+            this.groupD.scale.x *= -1
 
             this.scene.add(this.groupA)
             this.scene.add(this.groupB)
@@ -99,20 +104,15 @@ class Terrain {
             this.groupC.add(plane.clone())
 
             this.groupD.add(plane.clone())
-
         }
         
-    }
-
-    sat(x){
-        return Math.min(Math.max(x, 0.0), 1.0);
     }
 
     changeTerrain(){
         this.width = 50
         this.height = 50
 
-        var geometry = new THREE.PlaneGeometry( this.width, this.height, 150, 150 );
+        var geometry = new THREE.PlaneGeometry( this.width, this.height, 200, 200 );
         for (var i = 0; i < geometry.vertices.length; i++) {
             var v = geometry.vertices[i]
             let xf = (v.x) / this.width
@@ -125,7 +125,7 @@ class Terrain {
                 e = e / (1 + 0.5 + 0.25)
                 v.z = Math.pow(e, this.redistribution)
             }
-            if ((v.y >= 10 || v.y <= -10) && v.x <= (this.width / 2) - 1) {
+            if (v.y >= 10 || v.y <= -10) {
                 this.frequency = this.newFrequency
             } else if (this.background == false){
                 this.frequency = 0
@@ -144,44 +144,112 @@ class Terrain {
         plane.rotation.x = -Math.PI / 2
     }
 
-    update(){
-        // this.groupA.position.x -= 0.1
-        // this.groupB.position.x -= 0.1
-        // this.groupC.position.x -= 0.1
-        // this.groupD.position.x -= 0.1
-        if (this.groupA.position.x < -this.width / 2) {
-            this.groupA.position.x += this.width * 4
-        }
-        if (this.groupB.position.x < -this.width / 2) {
-            this.groupB.position.x += this.width * 4
-        }
-        if (this.groupC.position.x < -this.width / 2) {
-            this.groupC.position.x += this.width * 4
-        }
-        if (this.groupD.position.x < -this.width / 2) {
-            this.groupD.position.x += this.width * 4
-        }
-    }
     moveTiles(){
-        console.log("fin")
         switch(this.backTile) {
             case this.groupA:
                 this.groupA.position.x += this.width * 4
                 this.backTile = this.groupB
+                this.spawnCacti(this.groupA)
+                this.spawnPterodactyl(this.groupA)
                 break;
             case this.groupB:
                 this.groupB.position.x += this.width * 4
                 this.backTile = this.groupC
+                this.spawnPterodactyl(this.groupB)
                 break;
             case this.groupC:
                 this.groupC.position.x += this.width * 4
                 this.backTile = this.groupD
+                this.spawnPterodactyl(this.groupC)
                 break;
             case this.groupD:
                 this.groupD.position.x += this.width * 4
                 this.backTile = this.groupA
+                this.spawnPterodactyl(this.groupD)
                 break;
         }
+    }
+
+    spawnCacti(group) {
+        this.index++
+        let positions = [...this.spawnerPositions]
+        let cacti = []
+
+        group.traverse((child) => {
+            if(child.name == "cactus"){
+               cacti.push(child)
+            }
+        });
+
+        cacti.forEach( (cactus) => {
+            group.remove(cactus);
+        })
+
+        for(let i = 0; i < 3; i++) {
+            if(Math.random() > 0.25 || i > 1) {
+                let cactus = this.cactus.clone()
+                let rand = Math.floor(Math.random() * positions.length)
+                positions.splice(rand, 1)
+                group.add(cactus)
+                cactus.position.z = this.spawnerPositions[rand]
+            }
+        }
+    }
+
+    spawnPterodactyl(group) {
+        this.index++
+        let positions = [...this.spawnerPositions]
+        let cacti = []
+
+        group.traverse((child) => {
+            if(child.name == "pterodactyl"){
+               cacti.push(child)
+               console.log("removed pterodactyl")
+            }
+        });
+
+        cacti.forEach( (pterodactyl) => {
+            group.remove(pterodactyl);
+        })
+
+        for(let i = 0; i < 3; i++) {
+            if(Math.random() > 0.25 || i > 1) {
+                let pterodactyl = this.pterodactyl.scene.clone()
+                pterodactyl.name = "pterodactyl"
+                this.mixer = new THREE.AnimationMixer(pterodactyl);
+                this.mixers.push(this.mixer);
+
+                this.pterodactyl.animations.forEach(( clip ) => {
+                    this.mixer.clipAction(clip).play();
+                });
+                
+                pterodactyl.position.y = 10
+                pterodactyl.scale.x = 8
+                pterodactyl.scale.y = 8
+                pterodactyl.scale.z = 8
+                pterodactyl.rotation.z = Math.PI / 2
+
+                if(group == this.groupB || group == this.groupD) {
+                    pterodactyl.scale.x *= -1
+                }
+
+                this.scene.add(pterodactyl)
+
+                console.log(pterodactyl.name)
+
+                let rand = Math.floor(Math.random() * positions.length)
+                positions.splice(rand, 1)
+                group.add(pterodactyl)
+                pterodactyl.position.z = this.spawnerPositions[rand]
+            }
+        }
+    }
+
+    update() {
+        const dt = this.clock.getDelta();
+        this.mixers.forEach((mixer) => {
+            mixer.update(dt)
+        })
     }
 }
 

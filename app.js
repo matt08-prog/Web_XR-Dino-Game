@@ -2,7 +2,6 @@ import * as THREE from './libs/three/three.module.js';
 import { VRButton } from './libs/VRButton.js';
 import { BoxLineGeometry } from './libs/three/jsm/BoxLineGeometry.js';
 import { GLTFLoader } from './libs/three/jsm/GLTFLoader.js';
-import { FBXLoader} from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/FBXLoader.js'
 import { Stats } from './libs/stats.module.js';
 import { OrbitControls } from './libs/three/jsm/OrbitControls.js';
 import { SpotLightVolumetricMaterial } from './libs/SpotLightVolumetricMaterial.js';
@@ -55,7 +54,7 @@ class App{
 		container.appendChild( this.renderer.domElement );
         
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-        this.controls.target.set(0, 1.6, -2);
+        this.controls.target.set(0, 1.6, 0);
         this.controls.update();
         
         this.stats = new Stats();
@@ -74,34 +73,61 @@ class App{
         this.initScene();
 	}	
 
-    
     random( min, max ){
         return Math.random() * (max-min) + min;
     }
     
     initScene(){
-        this.terrain = new Terrain(this.scene)
-        this.player = new Player(this.scene, this.camera, this.dolly, this.terrain)
         this.fog = true
-        if(this.fog) {
-            const color = 0xFFFFFF;  // white
-            const near = 10;
-            const far = 75;
-            this.scene.fog = new THREE.Fog(color, near, far);
-        }
-        this.loadFBX()
+
+        this.loadCactus().then(this.loadPterodactyl())
+            .then((status) => {
+                console.log(status)
+
+                this.cactus.name = "cactus"
+                this.Pterodactyl.name = "pterodactyl"
+                this.terrain = new Terrain(this.scene, this.cactus, this.Pterodactyl, this.clock)
+                this.player = new Player(this.scene, this.camera, this.dolly, this.terrain)
+                if(this.fog) {
+                    const color = 0xFFFFFF;  // white
+                    const near = 10;
+                    const far = 75;
+                    this.scene.fog = new THREE.Fog(color, near, far);
+                }
+            }).catch(e => {
+                console.log(e)
+            })  
     }
 
-    loadFBX(){
-        const loader = new FBXLoader()
-        loader.setPath('Assets/')
-        loader.load('Cactus.fbx', (fbx) => {
-            fbx.scale.setScalar(0.1)
-            fbx.traverse(c => {
-                c.castShadow = true
+    loadCactus(){
+        return new Promise((resolve, reject) =>{
+            const loader = new GLTFLoader()
+            loader.setPath('./Assets/')
+            loader.load('Cactus.gltf', (gltf) => {
+                console.log("loaded")
+                this.cactus = new THREE.Group();
+                this.cactus.add(gltf.scene)
+                this.cactus.position.y = 2.8
+                resolve('success!')
+            }, null, (error) => {
+                reject('Failed')
             })
-            console.log("loaded")
-            this.scene.add(fbx)
+        })
+    }
+
+    loadPterodactyl(){
+        return new Promise((resolve, reject) =>{
+            const loader = new GLTFLoader()
+            loader.setPath('./Assets/')
+            loader.load('Pterodactyl.gltf', (gltf) => {
+                console.log("loaded")
+                this.Pterodactyl = gltf
+
+                resolve('success!')
+            }, null, (error) => {
+                console.log(error)
+                reject('Failed')
+            })
         })
     }
 
@@ -307,12 +333,19 @@ class App{
     }
     
 	render( ) {   
-        this.terrain.update()
+        if(this.terrain) {
+            this.terrain.update()
+        }
         if(this.player && this.renderer.xr.isPresenting){
             this.player.update()
         }
         
         const dt = this.clock.getDelta();
+        if(this.Pterodactyl){
+            // console.log("update")
+            // this.mixer.update(dt)
+        }
+        
         if (this.renderer.xr.isPresenting){
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
@@ -347,15 +380,24 @@ class App{
                         const offset = (thumbstick) ? 2 : 0;
                         const btnIndex = (thumbstick) ? 3 : 2;
                         const btnPressed = gp.buttons[btnIndex].pressed;
-
+                        
                         if ( inputSource.handedness == 'right'){
                             if(gp.axes[offset] > 0) {
-                               
+                               this.player.pos = 1
+                            } else if (gp.axes[offset] < 0) {
+                                this.player.pos = -1
+                            } else {
+                                this.player.pos = 0
                             }
                             this.handleInput(this.controllers.right.controller)
                         }else if ( inputSource.handedness == 'left'){
-                            if(gp.axes[offset] > 0 && this.both == 0) {
-                            }
+                            if(gp.axes[offset] > 0) {
+                                this.player.pos = 5
+                             } else if (gp.axes[offset] < 0) {
+                                 this.player.pos = -5
+                             } else {
+                                 this.player.pos = 0
+                             }
                         }
                     }
                 })
