@@ -339,11 +339,6 @@ class App{
         }
         
         if (this.renderer.xr.isPresenting){
-            if(this.once){
-                this.once = false
-                this.initScene();
-            }
-    
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
             const self = this; 
@@ -407,6 +402,10 @@ class App{
             this.elapsedTime += dt;
             if(this.player) {
                 this.player.update()
+            }
+            if(this.once){
+                this.once = false
+                setTimeoout(this.initScene(), 8000);
             }
         }else{
             this.stats.update();
