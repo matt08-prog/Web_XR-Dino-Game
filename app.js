@@ -78,56 +78,57 @@ class App{
     initScene(){
         this.fog = true
 
-        // this.loadCactus().then(this.loadPterodactyl())
-        //     .then((status) => {
-        //         console.log(status)
+        this.loadCactus().then(this.loadPterodactyl())
+            .then((status) => {
+                console.log(status)
 
-        //         this.cactus.name = "cactus"
-        //         this.Pterodactyl.name = "pterodactyl"
-        //         this.terrain = new Terrain(this.scene, this.cactus, this.Pterodactyl, this.clock)
-        //         this.player = new Player(this.scene, this.camera, this.dolly, this.terrain)
-        //         if(this.fog) {
-        //             const color = 0xFFFFFF;  // white
-        //             const near = 10;
-        //             const far = 75;
-        //             this.scene.fog = new THREE.Fog(color, near, far);
-        //         }
-        //     }).catch(e => {
-        //         console.log(e)
-        //     })  
+                this.cactus.name = "cactus"
+                this.Pterodactyl.name = "pterodactyl"
+                this.terrain = new Terrain(this.scene, this.cactus, this.Pterodactyl, this.clock)
+                this.player = new Player(this.scene, this.camera, this.dolly, this.terrain)
+                if(this.fog) {
+                    const color = 0xFFFFFF;  // white
+                    const near = 10;
+                    const far = 75;
+                    this.scene.fog = new THREE.Fog(color, near, far);
+                }
+                console.log("loaded pterodactyl and cactus")
+            }).catch(e => {
+                console.log(e)
+            })  
     }
 
-    // loadCactus(){
-    //     return new Promise((resolve, reject) =>{
-    //         const loader = new GLTFLoader()
-    //         loader.setPath('./Assets/')
-    //         loader.load('Cactus.gltf', (gltf) => {
-    //             console.log("loaded")
-    //             this.cactus = new THREE.Group();
-    //             this.cactus.add(gltf.scene)
-    //             this.cactus.position.y = 2.8
-    //             resolve('success!')
-    //         }, null, (error) => {
-    //             reject('Failed')
-    //         })
-    //     })
-    // }
+    loadCactus(){
+        return new Promise((resolve, reject) =>{
+            const loader = new GLTFLoader()
+            loader.setPath('./Assets/')
+            loader.load('Cactus.gltf', (gltf) => {
+                console.log("loaded")
+                this.cactus = new THREE.Group();
+                this.cactus.add(gltf.scene)
+                this.cactus.position.y = 2.8
+                resolve('success!')
+            }, null, (error) => {
+                // reject('Failed')
+            })
+        })
+    }
 
-    // loadPterodactyl(){
-    //     return new Promise((resolve, reject) =>{
-    //         const loader = new GLTFLoader()
-    //         loader.setPath('./Assets/')
-    //         loader.load('Pterodactyl.gltf', (gltf) => {
-    //             console.log("loaded")
-    //             this.Pterodactyl = gltf
+    loadPterodactyl(){
+        return new Promise((resolve, reject) =>{
+            const loader = new GLTFLoader()
+            loader.setPath('./Assets/')
+            loader.load('Pterodactyl.gltf', (gltf) => {
+                console.log("loaded")
+                this.Pterodactyl = gltf
 
-    //             resolve('success!')
-    //         }, null, (error) => {
-    //             console.log(error)
-    //             reject('Failed')
-    //         })
-    //     })
-    // }
+                resolve('success!')
+            }, null, (error) => {
+                console.log(error)
+                // reject('Failed')
+            })
+        })
+    }
 
     //{"trigger":{"button":0},"touchpad":{"button":2,"xAxis":0,"yAxis":1}},"squeeze":{"button":1},"thumbstick":{"button":3,"xAxis":2,"yAxis":3},"button":{"button":6}}}
     createButtonStates(components){
