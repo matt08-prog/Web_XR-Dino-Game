@@ -405,7 +405,7 @@ class App{
             }
             if(this.once){
                 this.once = false
-                setTimeoout(this.initScene(), 8000);
+                setTimeout(this.initScene(), 8000);
             }
         }else{
             this.stats.update();
