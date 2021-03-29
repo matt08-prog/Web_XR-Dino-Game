@@ -48,8 +48,6 @@ class App{
 		this.renderer.setPixelRatio( window.devicePixelRatio );
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
         this.renderer.outputEncoding = THREE.sRGBEncoding;
-        this.renderer.shadowMap.enabled = true;
-
         
 		container.appendChild( this.renderer.domElement );
         
@@ -63,14 +61,14 @@ class App{
         this.raycaster = new THREE.Raycaster();
         this.workingMatrix = new THREE.Matrix4();
         this.workingVector = new THREE.Vector3();
-        
+
+        this.initScene();
         this.setupXR();
         this.getInputSources = true;
 
         window.addEventListener('resize', this.resize.bind(this) );
         
         this.renderer.setAnimationLoop( this.render.bind(this) );
-        this.initScene();
 	}	
 
     random( min, max ){
@@ -336,9 +334,6 @@ class App{
         if(this.terrain) {
             this.terrain.update()
         }
-        if(this.player && this.renderer.xr.isPresenting){
-            this.player.update()
-        }
         
         const dt = this.clock.getDelta();
         if(this.Pterodactyl){
@@ -408,6 +403,9 @@ class App{
             }
             if (this.elapsedTime===undefined) this.elapsedTime = 0;
             this.elapsedTime += dt;
+            if(this.player) {
+                this.player.update()
+            }
         }else{
             this.stats.update();
         }
