@@ -331,10 +331,6 @@ class App{
     }
     
 	render( ) {   
-        if(this.terrain) {
-            this.terrain.update()
-        }
-        
         const dt = this.clock.getDelta();
         if(this.Pterodactyl){
             // console.log("update")
@@ -408,6 +404,9 @@ class App{
             }
         }else{
             this.stats.update();
+        }
+        if(this.terrain) {
+            this.terrain.update()
         }
         this.renderer.render( this.scene, this.camera );
     }
