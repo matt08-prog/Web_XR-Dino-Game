@@ -22,6 +22,7 @@ class App{
 	constructor(){
 		const container = document.createElement( 'div' );
 		document.body.appendChild( container );
+        this.once = true
         this.clock = new THREE.Clock();
         this.orbitOrigin = new THREE.Object3D()
         this.dolly = new THREE.Object3D()
@@ -338,7 +339,11 @@ class App{
         }
         
         if (this.renderer.xr.isPresenting){
-            this.initScene();
+            if(this.once){
+                this.once = false
+                this.initScene();
+            }
+    
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
             const self = this; 
