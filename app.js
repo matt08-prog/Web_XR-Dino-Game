@@ -62,7 +62,6 @@ class App{
         this.workingMatrix = new THREE.Matrix4();
         this.workingVector = new THREE.Vector3();
 
-        this.initScene();
         this.setupXR();
         this.getInputSources = true;
 
@@ -339,6 +338,7 @@ class App{
         }
         
         if (this.renderer.xr.isPresenting){
+            this.initScene();
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
             const self = this; 
