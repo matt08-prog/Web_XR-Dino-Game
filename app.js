@@ -388,10 +388,10 @@ class App{
                     const thumbstick = (this.type=='thumbstick');
                     const offset = (thumbstick) ? 2 : 0;
                     const btnIndex = (thumbstick) ? 3 : 2;
-                    const jumpBtnPressed = gp.buttons[4].pressed;
-                    if(gp.buttons[4].pressed) {
-                        this.player.jump = true
-                    }
+                    const btnPressed = gp.buttons[btnIndex].pressed;
+                    // if(gp.buttons[4].pressed) {
+                    //     this.player.jump = true
+                    // }
                     if ( inputSource.handedness == 'right'){
                         console.log("step 3")
                         console.log("right")
@@ -414,7 +414,6 @@ class App{
                         } else {
                             this.player.zPos = 0
                         }
-                        this.handleInput(this.controllers.right.controller)
                     }
                 })
             }
