@@ -25,7 +25,7 @@ class App{
         this.clock = new THREE.Clock();
         this.orbitOrigin = new THREE.Object3D()
         this.dolly = new THREE.Object3D()
-        this.dolly.position.set(0,1.0,0)
+        this.dolly.position.set(0,8.0,0)
         this.orbitOrigin.position.set(0,0,0)
         this.FOV = 50
 		this.camera = new THREE.PerspectiveCamera( this.FOV, window.innerWidth / window.innerHeight, 0.01, 10000 );
