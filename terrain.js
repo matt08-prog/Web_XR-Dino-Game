@@ -221,6 +221,7 @@ class Terrain {
 
                 this.pterodactyl.animations.forEach(( clip ) => {
                     this.mixer.clipAction(clip).play();
+                    console.log("played available clips")
                 });
                 
                 pterodactyl.position.y = 10
@@ -247,7 +248,7 @@ class Terrain {
 
     update() {
         const dt = this.clock.getDelta();
-        console.log(this.mixers.length)
+        // console.log(this.mixers.length)
         this.mixers.forEach((mixer) => {
             //console.log("mixer updating")
             try {
