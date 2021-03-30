@@ -380,7 +380,7 @@ class App{
                 });
                                     
                 this.getInputSources = false;
-            }else if (this.useStandard && this.type!=""){
+            }else if (this.useStandard && this.type!="" && this.player){
                 console.log("step 1")
                 inputSources.forEach( inputSource => {
                     console.log("step 2")
