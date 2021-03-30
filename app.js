@@ -409,7 +409,7 @@ class App{
                 this.player.update()
             }
             if(this.once >= 100){     
-                // this.initScene()
+                this.initScene()
                 this.once = -1
             } else if(this.once >= 0){
                 this.once++
