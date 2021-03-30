@@ -247,8 +247,9 @@ class Terrain {
 
     update() {
         const dt = this.clock.getDelta();
+        console.log(mixers.length)
         this.mixers.forEach((mixer) => {
-            console.log("mixer updating")
+            //console.log("mixer updating")
             try {
                 mixer.update(dt)
             } catch (e) {
