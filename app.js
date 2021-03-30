@@ -394,10 +394,10 @@ class App{
                         console.log("step 3")
                         console.log("right")
                         if(gp.axes[offset] > 0) {
-                            this.player.zPos = 1
+                            this.player.zPos = 5
                             console.log("right 1")
                         } else if (gp.axes[offset] < 0) {
-                            this.player.zPos = -1
+                            this.player.zPos = -5
                             console.log("right -1")
                         } else {
                             this.player.zPos = 0

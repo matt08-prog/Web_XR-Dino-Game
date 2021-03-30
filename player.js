@@ -31,6 +31,7 @@ class Player {
         }
         console.log(this.dolly.position.z)
         this.dolly.position.z = this.zPos
+        this.dolly.position.y = 8
     }
 
 }
