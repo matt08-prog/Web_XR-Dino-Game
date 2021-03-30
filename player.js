@@ -9,7 +9,7 @@ class Player {
         this.yPos = 3
         this.initScene()
         this.camera.fov = 10
-        this.playerSpeed = 3
+        this.playerSpeed = 1
     }
 
     initScene() {
