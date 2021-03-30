@@ -403,10 +403,13 @@ class App{
             if(this.player) {
                 this.player.update()
             }
-            if(this.once >= 10000){     
+            if(this.once >= 1000){     
                 this.initScene()
             } else {
                 this.once++
+            }
+            if(this.once % 100 == 0) {
+                console.log(this.once)
             }
         }else{
             this.stats.update();
