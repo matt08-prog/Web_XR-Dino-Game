@@ -64,7 +64,7 @@ class App{
         this.workingMatrix = new THREE.Matrix4();
         this.workingVector = new THREE.Vector3();
         
-        this.setupXR();
+        // this.setupXR();
         this.getInputSources = true;
 
         window.addEventListener('resize', this.resize.bind(this) );
@@ -351,6 +351,7 @@ class App{
             if(this.once){
                 this.once = false
                 this.initScene();
+                this.setupXR();
             }
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
