@@ -6,6 +6,7 @@ class Player {
         this.terrain = terrain
         this.pos = 0
         this.zPos = 0
+        this.yPos = 3
         this.initScene()
         this.camera.fov = 10
         this.playerSpeed = 3
@@ -31,7 +32,7 @@ class Player {
         }
         console.log(this.dolly.position.z)
         this.dolly.position.z = this.zPos
-        this.dolly.position.y = 8
+        this.dolly.position.y = this.yPos
     }
 
 }
