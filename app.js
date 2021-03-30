@@ -70,7 +70,7 @@ class App{
         window.addEventListener('resize', this.resize.bind(this) );
         
         this.renderer.setAnimationLoop( this.render.bind(this) );
-        this.initScene();
+        // this.initScene();
 	}	
 
     random( min, max ){
@@ -347,6 +347,7 @@ class App{
         }
         
         if (this.renderer.xr.isPresenting){
+            this.initScene();
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
             const self = this; 
