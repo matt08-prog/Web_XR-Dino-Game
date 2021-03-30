@@ -7,6 +7,8 @@ class Player {
         this.pos = 0
         this.zPos = 0
         this.yPos = 3
+        this.jump = false
+        this.floor = true
         this.initScene()
         this.camera.fov = 10
         this.playerSpeed = 1
@@ -32,6 +34,12 @@ class Player {
         }
         console.log(this.dolly.position.z)
         this.dolly.position.z = this.zPos
+
+        if(this.floor && this.jump) {
+            this.yPos = 8
+        } else if (this.jump == false) {
+            this.yPos = 1
+        }
         this.dolly.position.y = this.yPos
     }
 

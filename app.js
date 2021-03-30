@@ -389,7 +389,16 @@ class App{
                     const offset = (thumbstick) ? 2 : 0;
                     const btnIndex = (thumbstick) ? 3 : 2;
                     const btnPressed = gp.buttons[btnIndex].pressed;
+                    if(this.player())
+                    {
+                        if(gp.buttons[4].pressed) {
+                            this.player.jump = true
+                        } else {
+                            this.player.jump = false
+                        }
+                    }
                     
+
                     if ( inputSource.handedness == 'right'){
                         // console.log("step 3")
                         // console.log("right")
