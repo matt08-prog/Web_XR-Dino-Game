@@ -9,6 +9,8 @@ class Player {
         this.yPos = 3
         this.jump = false
         this.floor = true
+        this.acceleration = 0
+        this.gravity = 0.01
         this.playerSpeed = 2.8
         this.initScene()
         this.camera.fov = 10
@@ -37,11 +39,22 @@ class Player {
         this.dolly.position.z = this.zPos
 
         if(this.floor && this.jump) {
-            this.yPos = 8
-        } else if (this.jump == false) {
-            this.yPos = 1
+            this.speed = 4
+            this.speed -= this.gravity
+            this.yPos += this.acceleration
+            this.dolly.position.y = this.yPos
         }
-        this.dolly.position.y = this.yPos
+
+        if(this.dolly.position.y < 3) {
+            this.speed = 0
+            this.dolly.position.y = 3
+        } else {
+            this.speed -= this.gravity
+            this.yPos += this.acceleration
+            this.dolly.position.y = this.yPos
+        }
+
+        
     }
 
 }
