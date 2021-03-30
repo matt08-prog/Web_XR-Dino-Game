@@ -348,7 +348,7 @@ class App{
         }
         
         if (this.renderer.xr.isPresenting){
-            if(this.once >= 1000){
+            if(this.once >= 100){
                 this.once = -1
                 this.initScene();
             } else if(this.once >= 0) {
