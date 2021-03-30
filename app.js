@@ -416,6 +416,7 @@ class App{
             this.stats.update();
         }
         if(this.terrain) {
+            console.log("update terrain")
             this.terrain.update()
         }
         this.renderer.render( this.scene, this.camera );
