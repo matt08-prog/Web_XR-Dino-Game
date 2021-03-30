@@ -230,7 +230,7 @@ class Terrain {
                 pterodactyl.rotation.z = Math.PI / 2
 
                 if(group == this.groupB || group == this.groupD) {
-                    pterodactyl.scale.x *= -1
+                    pterodactyl.scale.y *= -1
                 }
 
                 this.scene.add(pterodactyl)
