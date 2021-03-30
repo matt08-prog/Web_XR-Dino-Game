@@ -7,12 +7,12 @@ class Player {
         this.pos = 0
         this.zPos = 0
         this.height = 1.0
-        this.initScene()
         this.camera.fov = 10
         this.playerSpeed = 3
         this.jump = false
         this.floor = true
         this.gravity = 0.2
+        this.initScene()
     }
 
     initScene() {
