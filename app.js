@@ -64,14 +64,14 @@ class App{
         this.workingMatrix = new THREE.Matrix4();
         this.workingVector = new THREE.Vector3();
         
-        // this.setupXR();
+        this.setupXR();
         this.getInputSources = true;
 
         window.addEventListener('resize', this.resize.bind(this) );
         
         this.renderer.setAnimationLoop( this.render.bind(this) );
         // this.initScene();
-        this.once = true
+        this.once = 0
 	}	
 
     random( min, max ){
@@ -348,10 +348,11 @@ class App{
         }
         
         if (this.renderer.xr.isPresenting){
-            if(this.once){
-                this.once = false
+            if(this.once >= 1000){
+                this.once = -1
                 this.initScene();
-                this.setupXR();
+            } else if(this.once >= 0) {
+                this.once++
             }
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
