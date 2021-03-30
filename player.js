@@ -29,7 +29,7 @@ class Player {
             this.terrain.moveTiles()
             this.pos += this.terrain.width
         }
-        console.log(this.dolly.position.z)
+        //console.log(this.dolly.position.z)
         this.dolly.position.z = this.zPos
     }
 
