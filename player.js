@@ -9,7 +9,7 @@ class Player {
         this.yPos = 3
         this.jump = false
         this.floor = true
-        this.playerSpeed = 1.4
+        this.playerSpeed = 2.8
         this.initScene()
         this.camera.fov = 10
         
