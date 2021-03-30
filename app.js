@@ -62,7 +62,7 @@ class App{
         this.raycaster = new THREE.Raycaster();
         this.workingMatrix = new THREE.Matrix4();
         this.workingVector = new THREE.Vector3();
-
+        this.initScene()
         this.setupXR();
         this.getInputSources = true;
 
@@ -409,7 +409,7 @@ class App{
                 this.player.update()
             }
             if(this.once >= 100){     
-                this.initScene()
+                // this.initScene()
                 this.once = -1
             } else if(this.once >= 0){
                 this.once++

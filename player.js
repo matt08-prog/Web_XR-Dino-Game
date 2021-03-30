@@ -32,7 +32,6 @@ class Player {
         //console.log(this.dolly.position.z)
         this.dolly.position.z = this.zPos
     }
-
 }
 
 export { Player }
