@@ -313,7 +313,7 @@ class App{
     }
 
     handleInput(controller){
-        console.log(this.nodeSelected)
+        // console.log(this.nodeSelected)
         if (this.wasPressed){
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
@@ -381,9 +381,9 @@ class App{
                                     
                 this.getInputSources = false;
             }else if (this.useStandard && this.type!="" && this.player){
-                console.log("step 1")
+                // console.log("step 1")
                 inputSources.forEach( inputSource => {
-                    console.log("step 2")
+                    // console.log("step 2")
                     const gp = inputSource.gamepad;
                     const thumbstick = (this.type=='thumbstick');
                     const offset = (thumbstick) ? 2 : 0;
@@ -391,17 +391,17 @@ class App{
                     const btnPressed = gp.buttons[btnIndex].pressed;
                     
                     if ( inputSource.handedness == 'right'){
-                        console.log("step 3")
-                        console.log("right")
+                        // console.log("step 3")
+                        // console.log("right")
                         if(gp.axes[offset] > 0) {
                             this.player.zPos = 5
-                            console.log("right 1")
+                            // console.log("right 1")
                         } else if (gp.axes[offset] < 0) {
                             this.player.zPos = -5
-                            console.log("right -1")
+                            // console.log("right -1")
                         } else {
                             this.player.zPos = 0
-                            console.log("right 0")
+                            // console.log("right 0")
                         }
                         this.handleInput(this.controllers.right.controller)
                     }else if ( inputSource.handedness == 'left'){
