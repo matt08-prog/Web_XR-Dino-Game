@@ -22,7 +22,7 @@ class App{
 	constructor(){
 		const container = document.createElement( 'div' );
 		document.body.appendChild( container );
-        this.once = true
+        this.once = 0
         this.clock = new THREE.Clock();
         this.orbitOrigin = new THREE.Object3D()
         this.dolly = new THREE.Object3D()
@@ -403,9 +403,9 @@ class App{
             if(this.player) {
                 this.player.update()
             }
-            if(this.once){
-                this.once = false
-                setTimeout(this.initScene(), 8000);
+            if(this.once >= 10000){
+                this.once++
+                this.initScene()
             }
         }else{
             this.stats.update();
