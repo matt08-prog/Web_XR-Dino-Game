@@ -9,6 +9,10 @@ class Player {
         this.initScene()
         this.camera.fov = 10
         this.playerSpeed = 3
+        this.jump = false
+        this.floor = true
+        this.gravity = 0.2
+        this.height = 1.0
     }
 
     initScene() {
@@ -16,6 +20,7 @@ class Player {
         this.dolly.position.x += (this.terrain.width * 2) - this.terrain.width / 2
         this.dolly.position.z = 0
         this.pos = this.dolly.position.x
+        this.dolly.position.y = this.height
         console.log("setup camera position")
         setInterval(() =>{
             this.playerSpeed += 0.1
@@ -31,7 +36,16 @@ class Player {
         }
         console.log(this.dolly.position.z)
         this.dolly.position.z = this.zPos
-        this.dolly.position.y = 1.0
+        
+        if(this.jump && this.floor == true) {
+            this.speed = 2
+        }
+        this.dolly.position.y = this.dolly.position.y + this.speed
+        this.speed *= this.gravity
+        if(this.dolly.position.y <= this.height) {
+            this.floor == true
+            this.speed = 0
+        }
     }
 
 }
