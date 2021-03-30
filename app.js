@@ -78,8 +78,8 @@ class App{
     initScene(){
         this.fog = true
 
-        this.loadCactus().then(this.loadPterodactyl())
-            .then((status) => {
+        this.loadCactus().then(() => {
+            this.loadPterodactyl().then((status) => {
                 console.log(status)
 
                 this.cactus.name = "cactus"
@@ -96,6 +96,7 @@ class App{
             }).catch(e => {
                 console.log(e)
             })  
+        }) 
     }
 
     loadCactus(){
@@ -109,7 +110,7 @@ class App{
                 this.cactus.position.y = 2.8
                 resolve('success!')
             }, null, (error) => {
-                // reject('Failed')
+                reject('Failed')
             })
         })
     }
@@ -125,7 +126,7 @@ class App{
                 resolve('success!')
             }, null, (error) => {
                 console.log(error)
-                // reject('Failed')
+                reject('Failed')
             })
         })
     }
