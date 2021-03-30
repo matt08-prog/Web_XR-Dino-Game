@@ -50,7 +50,7 @@ class Player {
             this.speed = 0
             this.floor = true
             this.dolly.position.y = 3
-        } else {
+        } else if(this.dolly.position.y > 3){
             this.acceleration -= this.gravity
             this.yPos += this.acceleration
             this.dolly.position.y = this.yPos
