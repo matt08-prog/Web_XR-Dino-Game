@@ -337,6 +337,10 @@ class App{
             // console.log("update")
             // this.mixer.update(dt)
         }
+        if(this.terrain) {
+            console.log("update terrain")
+            this.terrain.update()
+        }
         
         if (this.renderer.xr.isPresenting){
             const session = this.renderer.xr.getSession();
@@ -414,10 +418,6 @@ class App{
             // }
         }else{
             this.stats.update();
-        }
-        if(this.terrain) {
-            console.log("update terrain")
-            this.terrain.update()
         }
         this.renderer.render( this.scene, this.camera );
     }
