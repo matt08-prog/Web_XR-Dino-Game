@@ -338,7 +338,7 @@ class App{
             // this.mixer.update(dt)
         }
         if(this.terrain) {
-            console.log("update terrain")
+            //console.log("update terrain")
             this.terrain.update()
         }
         
