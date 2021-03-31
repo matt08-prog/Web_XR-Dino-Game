@@ -15,7 +15,7 @@ import {
 import { Terrain } from './terrain.js';
 import { Player } from './player.js';
 import { Text } from './text.js';
-import { UI } from 'winjs';
+//import { UI } from 'winjs';
 
 const DEFAULT_PROFILES_PATH = 'https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets@1.0/dist/profiles';
 const DEFAULT_PROFILE = 'generic-trigger';
