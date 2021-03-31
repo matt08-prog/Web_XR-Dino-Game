@@ -39,7 +39,7 @@ class Player {
         this.dolly.position.z = this.zPos
 
         if(this.floor && this.jump) {
-            this.acceleration = 0.01
+            this.acceleration = 2.0
             this.floor == false
             this.yPos += this.acceleration
             this.acceleration -= this.gravity
@@ -55,10 +55,7 @@ class Player {
             this.yPos += this.acceleration
             this.dolly.position.y = this.yPos
         }
-
-        
     }
-
 }
 
 export { Player }
