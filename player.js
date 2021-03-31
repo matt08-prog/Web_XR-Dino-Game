@@ -10,7 +10,7 @@ class Player {
         this.jump = false
         this.floor = true
         this.acceleration = 0
-        this.gravity = 0.0001
+        this.gravity = 0.01
         this.playerSpeed = 2.8
         this.initScene()
         this.camera.fov = 10
