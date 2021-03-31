@@ -24,7 +24,8 @@ class Text {
                 bevelOffset: 0,
                 bevelSegments: 5
             } );
-
+            
+            geometry.computeBoundingBox()
             const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
 
             const mesh = new self.THREE.Mesh(geometry, material)
