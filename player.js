@@ -40,7 +40,7 @@ class Player {
 
         if(this.floor && this.jump) {
             this.acceleration = 0.65
-            this.floor == false
+            this.floor = false
             this.yPos += this.acceleration
             this.acceleration -= this.gravity
             this.dolly.position.y = this.yPos
@@ -52,7 +52,7 @@ class Player {
             this.dolly.position.y = 3
         } else if(this.dolly.position.y > 3){
             console.log(this.acceleration)
-            this.floor == false
+            this.floor = false
             this.acceleration -= this.gravity
             this.yPos += this.acceleration
             this.dolly.position.y = this.yPos
