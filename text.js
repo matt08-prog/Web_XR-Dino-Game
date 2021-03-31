@@ -17,14 +17,8 @@ class Text {
                 font: font,
                 size: 80,
                 height: 5,
-                curveSegments: 12,
-                bevelEnabled: true,
-                bevelThickness: 10,
-                bevelSize: 8,
-                bevelOffset: 0,
-                bevelSegments: 5
             } );
-            
+
             geometry.computeBoundingBox()
             const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
 
