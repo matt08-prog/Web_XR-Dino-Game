@@ -10,7 +10,7 @@ class Text {
         console.log("loading font currently")
         const loader = new this.THREE.FontLoader();
 
-        loader.load( 'libs/fonts/PressStart2P-Regular.ttf', function ( font ) {
+        loader.load( 'libs/fonts/PressStart2P-Regular.json', function ( font ) {
 
             console.log("loaded font")
             const geometry = new this.THREE.TextGeometry( 'Hello three.js!', {
