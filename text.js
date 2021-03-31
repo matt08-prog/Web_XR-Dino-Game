@@ -1,15 +1,16 @@
 class Text {
-    constructor(scene, camera) {
+    constructor(scene, camera, THREE) {
+        this.THREE = THREE
         this.initScene()
     }
 
     initScene() {
         // Load Font
-        const loader = new THREE.FontLoader();
+        const loader = new this.THREE.FontLoader();
 
         loader.load( 'libs/fonts/PressStart2P-Regular.ttf', function ( font ) {
 
-            const geometry = new THREE.TextGeometry( 'Hello three.js!', {
+            const geometry = new this.THREE.TextGeometry( 'Hello three.js!', {
                 font: font,
                 size: 80,
                 height: 5,

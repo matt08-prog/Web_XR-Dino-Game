@@ -91,7 +91,7 @@ class App{
                 this.Pterodactyl.name = "pterodactyl"
                 this.terrain = new Terrain(this.scene, this.cactus, this.Pterodactyl, this.clock)
                 this.player = new Player(this.scene, this.camera, this.dolly, this.terrain)
-                this.text = new Text(this.scene, this.camera)
+                this.text = new Text(this.scene, this.camera, THREE)
                 if(this.fog) {
                     const color = 0xFFFFFF;  // white
                     const near = 10;
