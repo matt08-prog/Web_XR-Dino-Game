@@ -14,6 +14,8 @@ import {
 
 import { Terrain } from './terrain.js';
 import { Player } from './player.js';
+import { Text } from './text.js';
+import { UI } from 'winjs';
 
 const DEFAULT_PROFILES_PATH = 'https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets@1.0/dist/profiles';
 const DEFAULT_PROFILE = 'generic-trigger';
@@ -89,6 +91,7 @@ class App{
                 this.Pterodactyl.name = "pterodactyl"
                 this.terrain = new Terrain(this.scene, this.cactus, this.Pterodactyl, this.clock)
                 this.player = new Player(this.scene, this.camera, this.dolly, this.terrain)
+                this.text = new Text(this.scene, this.camera)
                 if(this.fog) {
                     const color = 0xFFFFFF;  // white
                     const near = 10;
@@ -333,12 +336,15 @@ class App{
         this.renderer.setSize( window.innerWidth, window.innerHeight );  
     }
     
-	render( ) {   
+	render( ) {
         if(this.terrain) {
             this.terrain.update()
         }
         if(this.player && this.renderer.xr.isPresenting){
             this.player.update()
+        }
+        if(this.text) {
+            this.text.update()
         }
         
         const dt = this.clock.getDelta();
@@ -401,7 +407,7 @@ class App{
                                 this.player.jump = false
                             }
                         }
-                        
+
                         if(gp.axes[offset] > 0) {
                             this.player.zPos = 5
                             console.log("right 1")
