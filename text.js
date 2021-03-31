@@ -7,7 +7,7 @@ class Text {
 
     initScene() {
         // Load Font
-        console.log("loading font")
+        console.log("loading font currently")
         const loader = new this.THREE.FontLoader();
 
         loader.load( 'libs/fonts/PressStart2P-Regular.ttf', function ( font ) {
