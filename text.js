@@ -9,11 +9,11 @@ class Text {
         // Load Font
         console.log("loading font currently")
         const loader = new this.THREE.FontLoader();
-
+        const self = this
         loader.load( 'libs/fonts/PressStart2P-Regular.json', function ( font ) {
 
             console.log("loaded font")
-            const geometry = new this.THREE.TextGeometry( 'Hello three.js!', {
+            const geometry = new self.THREE.TextGeometry( 'Hello three.js!', {
                 font: font,
                 size: 80,
                 height: 5,
@@ -25,10 +25,10 @@ class Text {
                 bevelSegments: 5
             } );
 
-            const material = new this.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
+            const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
 
-            const mesh = new this.THREE.Mesh(geometry, material)
-            this.scene.add(mesh)
+            const mesh = new self.THREE.Mesh(geometry, material)
+            self.scene.add(mesh)
 
         } );
     }
