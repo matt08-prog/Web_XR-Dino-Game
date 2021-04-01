@@ -8,7 +8,7 @@ class Text {
     initScene() {
         // Load Font
         console.log("loading font currently")
-
+        const self = this
         // var request = new XMLHttpRequest();
         // request.open("GET", "libs/fonts/PressStart2P-Regular.json", false);
         // request.send(null)
@@ -32,7 +32,7 @@ class Text {
 
         $.getJSON("libs/fonts/PressStart2P-Regular.json", function(json) {
             console.log(json)
-            this.loadFont(json)
+            self.loadFont(json)
         });
     }
 
@@ -41,7 +41,7 @@ class Text {
         const json = JSON.parse(data)
         console.log(json)
         const loader = new this.THREE.FontLoader();
-        loader.parse( data, function ( font ) {
+        loader.parse( json, function ( font ) {
             try {
                 console.log("loaded font")
                 
