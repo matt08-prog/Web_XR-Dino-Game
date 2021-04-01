@@ -8,9 +8,20 @@ class Text {
     initScene() {
         // Load Font
         console.log("loading font currently")
+
         const loader = new this.THREE.FontLoader();
+        
+        var request = new XMLHttpRequest();
+        request.open("GET", "libs/fonts/PressStart2P-Regular.json", false);
+        request.send(null)
+        var json = JSON.parse(request.responseText);
+        //alert (my_JSON_object.result[0]);
+
+        
+        //const json = JSON.parse(  )
+        
         const self = this
-        loader.load( 'libs/fonts/PressStart2P-Regular.json', function ( font ) {
+        loader.parse( json, function ( font ) {
             try {
                 console.log("loaded font")
                 const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
