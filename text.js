@@ -39,7 +39,7 @@ class Text {
     loadFont(data) {
         const self = this
         //const json = JSON.parse(data)
-        console.log(json)
+        //console.log(json)
         const loader = new this.THREE.FontLoader();
         loader.parse( data, function ( font ) {
             try {
