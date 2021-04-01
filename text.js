@@ -34,7 +34,7 @@ class Text {
                         size: 80,
                         height: 5,
                     } );
-    
+
                     geometry.computeBoundingBox()
                     const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
     
