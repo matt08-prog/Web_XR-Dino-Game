@@ -21,7 +21,9 @@ class Text {
             type: "GET",
             url: "libs/fonts/PressStart2P-Regular.json",
             dataType: "json",
-            success : this.loadFont(result)
+            success : function (result) {
+                this.loadFont(result)
+            }
             // data: JSON.parse({ ParameterName: paramValue }),
 
         });
