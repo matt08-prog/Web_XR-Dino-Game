@@ -35,9 +35,8 @@ class Text {
 
     loadFont(data) {
         const self = this
-        const json = JSON.parse(data)
         console.log(data)
-
+        const json = JSON.parse(data)
         loader.parse( json, function ( font ) {
             try {
                 console.log("loaded font")
