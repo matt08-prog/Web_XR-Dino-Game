@@ -26,6 +26,7 @@ class Text {
             loader.parse( json, function ( data ) {
                 try {
                     console.log("loaded font")
+                    console.log(data)
                     const font = JSON.parse(data)
                     const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
                         font:font,
