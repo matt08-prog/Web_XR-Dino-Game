@@ -9,35 +9,39 @@ class Text {
         // Load Font
         console.log("loading font currently")
 
-        const loader = new this.THREE.FontLoader();
-
         // var request = new XMLHttpRequest();
         // request.open("GET", "libs/fonts/PressStart2P-Regular.json", false);
         // request.send(null)
         // var json = JSON.parse(request.responseText);
-        const self = this
-        $.ajax({
-            async: true,
-            type: "GET",
-            url: "libs/fonts/PressStart2P-Regular.json",
-            dataType: "json",
-            success : function (result) {
-                self.loadFont(result)
-            }
-            // data: JSON.parse({ ParameterName: paramValue }),
+        // const self = this
+        // $.ajax({
+        //     async: true,
+        //     type: "GET",
+        //     url: "libs/fonts/PressStart2P-Regular.json",
+        //     dataType: "json",
+        //     success : function (result) {
+        //         self.loadFont(result)
+        //     }
+        //     // data: JSON.parse({ ParameterName: paramValue }),
 
-        });
+        // });
         //alert (my_JSON_object.result[0]);
 
         
         //const json = JSON.parse(  )
+
+        $.getJSON("libs/fonts/PressStart2P-Regular.json", function(json) {
+            console.log(json)
+            loadFont(json)
+        });
     }
 
     loadFont(data) {
         const self = this
         console.log(data)
-        const json = JSON.parse(data)
-        loader.parse( json, function ( font ) {
+        //const json = JSON.parse(data)
+        const loader = new this.THREE.FontLoader();
+        loader.parse( data, function ( font ) {
             try {
                 console.log("loaded font")
                 
