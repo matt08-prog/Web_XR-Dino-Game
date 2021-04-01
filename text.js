@@ -21,13 +21,14 @@ class Text {
             type: "GET",
             url: "libs/fonts/PressStart2P-Regular.json",
             contentType: "application/json",
-            data: JSON.stringify({ ParameterName: paramValue }),
+            // data: JSON.parse({ ParameterName: paramValue }),
          }).then((font) => {
             loader.parse( json, function ( data ) {
                 try {
                     console.log("loaded font")
+                    const font = JSON.parse(data)
                     const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
-                        font: data.font,
+                        font:font,
                         size: 80,
                         height: 5,
                     } );
