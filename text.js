@@ -32,14 +32,14 @@ class Text {
 
         $.getJSON("libs/fonts/PressStart2P-Regular.json", function(json) {
             console.log(json)
-            loadFont(json)
+            this.loadFont(json)
         });
     }
 
     loadFont(data) {
         const self = this
-        console.log(data)
-        //const json = JSON.parse(data)
+        const json = JSON.parse(data)
+        console.log(json)
         const loader = new this.THREE.FontLoader();
         loader.parse( data, function ( font ) {
             try {
