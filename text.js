@@ -41,7 +41,7 @@ class Text {
         //const json = JSON.parse(data)
         //console.log(json)
         const loader = new this.THREE.FontLoader();
-        loader.load( data, function ( font ) {
+        loader.load( "libs/fonts/PressStart2P-Regular.json", function ( font ) {
             try {
                 console.log("loaded font")
                 
