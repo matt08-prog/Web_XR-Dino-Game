@@ -22,7 +22,12 @@ class Text {
                 geometry.computeBoundingBox()
                 const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
 
+                const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
                 const mesh = new self.THREE.Mesh(geometry, material)
+                
+                mesh.position.x = centerOffset
+
                 self.scene.add(mesh)
             } catch (e) {
                 console.error(e)
