@@ -21,34 +21,9 @@ class Text {
             type: "GET",
             url: "libs/fonts/PressStart2P-Regular.json",
             contentType: "application/json",
+            success : loadFont(data)
             // data: JSON.parse({ ParameterName: paramValue }),
-         }).then((data) => {
-            const json = JSON.parse(data)
-            console.log(data)
-            loader.parse( json, function ( font ) {
-                try {
-                    console.log("loaded font")
-                    
-                    const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
-                        font: font,
-                        size: 80,
-                        height: 5,
-                    } );
 
-                    geometry.computeBoundingBox()
-                    const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
-    
-                    const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
-    
-                    const mesh = new self.THREE.Mesh(geometry, material)
-                    
-                    mesh.position.x = centerOffset
-    
-                    self.scene.add(mesh)
-                } catch (e) {
-                    console.error(e)
-                }
-            });
         });
         //alert (my_JSON_object.result[0]);
 
@@ -56,6 +31,34 @@ class Text {
         //const json = JSON.parse(  )
     }
 
+    loadFont(data) {
+        const json = JSON.parse(data)
+        console.log(data)
+        
+        loader.parse( json, function ( font ) {
+            try {
+                console.log("loaded font")
+                
+                const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
+                    font: font,
+                    size: 80,
+                    height: 5,
+                } );
+
+                geometry.computeBoundingBox()
+                const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
+
+                const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+                const mesh = new self.THREE.Mesh(geometry, material)
+                
+                mesh.position.x = centerOffset
+
+                self.scene.add(mesh)
+            } catch (e) {
+                console.error(e)
+            }
+    }
     update(){
 
     }
