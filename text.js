@@ -15,14 +15,14 @@ class Text {
         // request.open("GET", "libs/fonts/PressStart2P-Regular.json", false);
         // request.send(null)
         // var json = JSON.parse(request.responseText);
-        
+        const self = this
         $.ajax({
             async: true,
             type: "GET",
             url: "libs/fonts/PressStart2P-Regular.json",
             dataType: "json",
             success : function (result) {
-                this.loadFont(result)
+                self.loadFont(result)
             }
             // data: JSON.parse({ ParameterName: paramValue }),
 
