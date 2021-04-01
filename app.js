@@ -99,7 +99,7 @@ class App{
                     this.scene.fog = new THREE.Fog(color, near, far);
                 }
             }).catch(e => {
-                console.log(e)
+                console.error(e)
             })  
     }
 
