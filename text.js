@@ -20,7 +20,7 @@ class Text {
             async: true,
             type: "GET",
             url: "libs/fonts/PressStart2P-Regular.json",
-            contentType: "application/json",
+            dataType: "json",
             success : this.loadFont(result)
             // data: JSON.parse({ ParameterName: paramValue }),
 
