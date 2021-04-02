@@ -204,7 +204,7 @@ class Terrain {
         group.traverse((child) => {
             if(child.name == "pterodactyl"){
                cacti.push(child)
-               console.log("removed pterodactyl")
+               //console.log("removed pterodactyl")
             }
         });
 
@@ -235,7 +235,7 @@ class Terrain {
 
                 this.scene.add(pterodactyl)
 
-                console.log(pterodactyl.name)
+                //console.log(pterodactyl.name)
 
                 let rand = Math.floor(Math.random() * positions.length)
                 positions.splice(rand, 1)

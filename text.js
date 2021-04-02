@@ -36,6 +36,7 @@ class Text {
         //     console.log(json)
         //     self.loadFont(json)
         // });
+
         let font;
         const loader = new TTFLoader()
         const fontLoader = new this.THREE.FontLoader()

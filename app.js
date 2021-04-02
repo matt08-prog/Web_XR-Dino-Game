@@ -79,7 +79,7 @@ class App{
     random( min, max ){
         return Math.random() * (max-min) + min;
     }
-    
+
     initScene(){
         this.fog = true
 
@@ -100,7 +100,7 @@ class App{
                 }
             }).catch(e => {
                 console.error(e)
-            })  
+            })
     }
 
     loadCactus(){
