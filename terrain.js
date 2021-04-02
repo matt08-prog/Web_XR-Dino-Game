@@ -112,7 +112,7 @@ class Terrain {
         this.width = 50
         this.height = 50
 
-        var geometry = new THREE.PlaneGeometry( this.width, this.height, 200, 200 );
+        var geometry = new THREE.PlaneGeometry( this.width, this.height, 100, 100 );
         for (var i = 0; i < geometry.vertices.length; i++) {
             var v = geometry.vertices[i]
             let xf = (v.x) / this.width
