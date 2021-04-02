@@ -37,7 +37,7 @@ class Text {
         let font;
         const loader = new this.THREE.TTFLoader()
         const fontLoader = new this.THREE.FontLoader()
-        loader.load('./hobby-of-night.ttf',fnt => font = fontLoader.parse(fnt)).then( () => {
+        loader.load('./libs/fonts/PressStart2P-Regular.ttf',fnt => font = fontLoader.parse(fnt)).then( () => {
             try {
                 console.log("loaded font")
                 
