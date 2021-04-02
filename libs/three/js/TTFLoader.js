@@ -1,7 +1,7 @@
 import {
 	FileLoader,
 	Loader
-} from './three.module.js';
+} from '../three.module.js';
 import { opentype } from './opentype.module.js';
 
 /**
