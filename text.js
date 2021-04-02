@@ -4,6 +4,7 @@ class Text {
     constructor(scene, camera, THREE) {
         this.THREE = THREE
         this.scene = scene
+        this.first = true
         this.initScene()
     }
 
