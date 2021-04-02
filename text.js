@@ -19,7 +19,7 @@ class Text {
         this.fontLoader = new this.THREE.FontLoader()
         this.loader.load('./libs/fonts/PressStart2P-Regular.ttf', fnt => {
             this.font = this.fontLoader.parse(fnt)
-            this.loadFont("00000000")
+            this.loadFont("0000")
         })
     }
 

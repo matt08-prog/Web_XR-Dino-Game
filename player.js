@@ -26,6 +26,7 @@ class Player {
         this.pos = this.dolly.position.x
         console.log("setup camera position")
         setInterval(() =>{
+            this.score += 10
             this.playerSpeed += 0.2
             this.length = 4 - this.score.toString().length
             if(this.text) {
