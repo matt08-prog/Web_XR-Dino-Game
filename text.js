@@ -30,11 +30,11 @@ class Text {
                 geometry.computeBoundingBox()
                 const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
 
-                const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+                //const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
 
                 self.mesh = new self.THREE.Mesh(geometry, material)
                 
-                self.mesh.position.x = centerOffset
+                //self.mesh.position.x = centerOffset
                 self.mesh.rotation.y = -Math.PI / 2
                 self.scene.add(self.mesh)
             } catch (e) {
