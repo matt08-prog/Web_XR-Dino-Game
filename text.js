@@ -9,35 +9,10 @@ class Text {
     }
 
     initScene() {
+
         // Load Font
         console.log("loading font currently")
         const self = this
-        // var request = new XMLHttpRequest();
-        // request.open("GET", "libs/fonts/PressStart2P-Regular.json", false);
-        // request.send(null)
-        // var json = JSON.parse(request.responseText);
-        // const self = this
-        // $.ajax({
-        //     async: true,
-        //     type: "GET",
-        //     url: "libs/fonts/PressStart2P-Regular.json",
-        //     dataType: "json",
-        //     success : function (result) {
-        //         self.loadFont(result)
-        //     }
-        //     // data: JSON.parse({ ParameterName: paramValue }),
-
-        // });
-        //alert (my_JSON_object.result[0]);
-
-        
-        //const json = JSON.parse(  )
-
-        // $.getJSON("libs/fonts/PressStart2P-Regular.json", function(json) {
-        //     console.log(json)
-        //     self.loadFont(json)
-        // });
-
         let font;
         const loader = new TTFLoader()
         const fontLoader = new this.THREE.FontLoader()
@@ -60,7 +35,7 @@ class Text {
                 self.mesh = new self.THREE.Mesh(geometry, material)
                 
                 self.mesh.position.x = centerOffset
-                self.mesh.rotation.y = Math.PI / 2
+                self.mesh.rotation.y = -Math.PI / 2
                 self.scene.add(self.mesh)
             } catch (e) {
                 console.error(e)
