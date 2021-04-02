@@ -39,7 +39,8 @@ class Text {
         let font;
         const loader = new TTFLoader()
         const fontLoader = new this.THREE.FontLoader()
-        loader.load('./libs/fonts/PressStart2P-Regular.ttf',fnt => font = fontLoader.parse(fnt)).then( () => {
+        loader.load('./libs/fonts/PressStart2P-Regular.ttf', fnt => {
+            font = fontLoader.parse(fnt)
             try {
                 console.log("loaded font")
                 
