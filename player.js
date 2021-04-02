@@ -33,12 +33,12 @@ class Player {
     update(){
         this.dolly.position.x += 0.1 * this.playerSpeed
         if (this.text.mesh) {
-            if (this.text.first) {
-                this.text.first = false
-                this.text.mesh.position.x += (this.terrain.width * 2) - this.terrain.width / 2
-            }
+            // if (this.text.first) {
+            //     this.text.first = false
+            //     this.text.mesh.position.x += this.dolly.position.x + ((this.terrain.width * 2) - this.terrain.width / 2)
+            // }
             console.log("mesh is real")
-            this.text.mesh.position.x += 0.1 * this.playerSpeed
+            this.text.mesh.position.x = this.dolly.position.x + ((this.terrain.width * 2) - this.terrain.width / 2)
             console.log(this.text.mesh.position.x)
         }
 
