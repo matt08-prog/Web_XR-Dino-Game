@@ -5,6 +5,7 @@ class Text {
         this.THREE = THREE
         this.scene = scene
         this.first = true
+        this.font
         this.initScene()
     }
 
@@ -13,35 +14,45 @@ class Text {
         // Load Font
         console.log("loading font currently")
         const self = this
-        let font;
-        const loader = new TTFLoader()
-        const fontLoader = new this.THREE.FontLoader()
-        loader.load('./libs/fonts/PressStart2P-Regular.ttf', fnt => {
-            font = fontLoader.parse(fnt)
-            try {
-                console.log("loaded font")
-                
-                const geometry = new self.THREE.TextGeometry( "Score: 00000000", {
-                    font: font,
-                    size: 5,
-                    height: 5,
-                } );
 
-                geometry.computeBoundingBox()
-                const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
-
-                const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
-
-                self.mesh = new self.THREE.Mesh(geometry, material)
-                
-                self.mesh.position.z = centerOffset
-                self.mesh.position.y = 8
-                self.mesh.rotation.y = -Math.PI / 2
-                self.scene.add(self.mesh)
-            } catch (e) {
-                console.error(e)
-            }
+        loader = new TTFLoader()
+        this.fontLoader = new this.THREE.FontLoader()
+        this.loader.load('./libs/fonts/PressStart2P-Regular.ttf', fnt => {
+            this.font = this.fontLoader.parse(fnt)
+            this.loadFont("00000000")
         })
+    }
+
+    loadFont(text) {
+
+        if(this.mesh) {
+            this.scene.remove(this.mesh)
+        }
+
+        try {
+            console.log("loaded font")
+            
+            const geometry = new this.THREE.TextGeometry( "score:" + text, {
+                font: this.font,
+                size: 5,
+                height: 5,
+            } );
+
+            geometry.computeBoundingBox()
+            const material = new this.THREE.MeshPhongMaterial( { color: 0x6e6e6e, fog: false} ) // front
+
+            const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+            this.mesh = new this.THREE.Mesh(geometry, material)
+            this.mesh.name = "text"
+            
+            this.mesh.position.z = centerOffset
+            this.mesh.position.y = 16
+            this.mesh.rotation.y = -Math.PI / 2
+            this.scene.add(this.mesh)
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     update(){
