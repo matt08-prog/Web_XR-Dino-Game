@@ -1,4 +1,4 @@
-import { TTFLoader } from './libs/three/TTFLoader.js'
+import { TTFLoader } from './libs/three/js/TTFLoader.js'
 
 class Text {
     constructor(scene, camera, THREE) {
