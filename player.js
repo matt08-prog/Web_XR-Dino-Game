@@ -32,9 +32,9 @@ class Player {
 
     update(){
         this.dolly.position.x += 0.1 * this.playerSpeed
-        if (this.terrain.mesh) {
+        if (this.text.mesh) {
             console.log("mesh is real")
-            this.terrain.mesh.x += 0.1 * this.playerSpeed
+            this.text.mesh.x += 0.1 * this.playerSpeed
         }
         if (this.dolly.position.x > (this.terrain.width / 2) + this.pos) {
             this.terrain.moveTiles()
