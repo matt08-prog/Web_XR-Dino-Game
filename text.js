@@ -23,21 +23,19 @@ class Text {
                 
                 const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
                     font: font,
-                    size: 6,
+                    size: 10,
                     height: 5,
                 } );
 
                 geometry.computeBoundingBox()
-                const material = new self.THREE.MeshPhongMaterial( { color: 0x6e6e6e, fog: false} ) // front
+                const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
 
                 const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
 
                 self.mesh = new self.THREE.Mesh(geometry, material)
                 
                 self.mesh.position.x = centerOffset
-                self.mesh.position.z = centerOffset
                 self.mesh.rotation.y = -Math.PI / 2
-                self.mesh.position.y = 8
                 self.scene.add(self.mesh)
             } catch (e) {
                 console.error(e)
