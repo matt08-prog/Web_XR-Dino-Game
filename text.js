@@ -15,7 +15,7 @@ class Text {
         console.log("loading font currently")
         const self = this
 
-        loader = new TTFLoader()
+        this.loader = new TTFLoader()
         this.fontLoader = new this.THREE.FontLoader()
         this.loader.load('./libs/fonts/PressStart2P-Regular.ttf', fnt => {
             this.font = this.fontLoader.parse(fnt)
