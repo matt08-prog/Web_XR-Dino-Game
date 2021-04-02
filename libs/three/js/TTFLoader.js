@@ -2,7 +2,7 @@ import {
 	FileLoader,
 	Loader
 } from '../three.module.js';
-import { opentype } from './opentype.module.js';
+import { opentype } from './opentype.module.min.js';
 
 /**
  * Requires opentype.js to be included in the project.
