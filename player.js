@@ -15,7 +15,8 @@ class Player {
         this.playerSpeed = 2.8
         this.initScene()
         this.camera.fov = 10
-        
+        this.score = 0
+        this.length = 0
     }
 
     initScene() {
@@ -25,7 +26,11 @@ class Player {
         this.pos = this.dolly.position.x
         console.log("setup camera position")
         setInterval(() =>{
-            this.playerSpeed += 0.1
+            this.playerSpeed += 0.2
+            this.length = 4 - this.score.toString().length
+            if(this.text) {
+                this.text.loadFont(this.score.toString().padStart(this.length, "0"))
+            }
             console.log("increase speed")
         }, 8350)
     }
