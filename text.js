@@ -21,9 +21,9 @@ class Text {
             try {
                 console.log("loaded font")
                 
-                const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
+                const geometry = new self.THREE.TextGeometry( "Score: 00000000", {
                     font: font,
-                    size: 10,
+                    size: 5,
                     height: 5,
                 } );
 
@@ -35,6 +35,7 @@ class Text {
                 self.mesh = new self.THREE.Mesh(geometry, material)
                 
                 self.mesh.position.z = centerOffset
+                self.mesh.position.y = 8
                 self.mesh.rotation.y = -Math.PI / 2
                 self.scene.add(self.mesh)
             } catch (e) {
