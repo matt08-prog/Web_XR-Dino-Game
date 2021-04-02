@@ -1,9 +1,10 @@
 class Player {
-    constructor(scene, camera, dolly, terrain) {
+    constructor(scene, camera, dolly, terrain, text) {
         this.scene = scene
         this.camera = camera
         this.dolly = dolly
         this.terrain = terrain
+        this.text = text
         this.pos = 0
         this.zPos = 0
         this.yPos = 3
@@ -31,6 +32,9 @@ class Player {
 
     update(){
         this.dolly.position.x += 0.1 * this.playerSpeed
+        if (this.terrain.mesh) {
+            this.terrain.mesh.x += 0.1 * this.playerSpeed
+        }
         if (this.dolly.position.x > (this.terrain.width / 2) + this.pos) {
             this.terrain.moveTiles()
             this.pos += this.terrain.width
