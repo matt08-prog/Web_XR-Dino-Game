@@ -31,7 +31,7 @@ class Player {
             this.length = 4 - this.score.toString().length
             if(this.text) {
                 console.log(this.score)
-                this.text.loadFont(this.score.toString().padStart(this.length, "0"))
+                this.text.loadFont(this.score.toString().padStart(this.length, '0'))
             }
             console.log("increase speed")
         }, 8350)
