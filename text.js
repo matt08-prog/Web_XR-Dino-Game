@@ -28,7 +28,7 @@ class Text {
                 } );
 
                 geometry.computeBoundingBox()
-                const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
+                const material = new self.THREE.MeshPhongMaterial( { color: 0x6e6e6e, fog: false} ) // front
 
                 const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
 
