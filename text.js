@@ -46,7 +46,7 @@ class Text {
                 
                 const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
                     font: font,
-                    size: 80,
+                    size: 10,
                     height: 5,
                 } );
 
@@ -58,7 +58,7 @@ class Text {
                 const mesh = new self.THREE.Mesh(geometry, material)
                 
                 mesh.position.x = centerOffset
-
+                mesh.rotation.y = Math.PI / 2
                 self.scene.add(mesh)
             } catch (e) {
                 console.error(e)
