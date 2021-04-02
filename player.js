@@ -37,7 +37,7 @@ class Player {
             //     this.text.first = false
             //     this.text.mesh.position.x += this.dolly.position.x + ((this.terrain.width * 2) - this.terrain.width / 2)
             // }
-            console.log("mesh is real")
+            //console.log("mesh is real")
             //this.text.mesh.position.x = this.dolly.position.x + ((this.terrain.width * 2) - this.terrain.width / 2)
             //console.log(this.text.mesh.position.x)
         }
