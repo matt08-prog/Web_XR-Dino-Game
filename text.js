@@ -30,10 +30,37 @@ class Text {
         
         //const json = JSON.parse(  )
 
-        $.getJSON("libs/fonts/PressStart2P-Regular.json", function(json) {
-            console.log(json)
-            self.loadFont(json)
-        });
+        // $.getJSON("libs/fonts/PressStart2P-Regular.json", function(json) {
+        //     console.log(json)
+        //     self.loadFont(json)
+        // });
+        let font;
+        const loader = new this.THREE.TTFLoader()
+        const fontLoader = new this.THREE.FontLoader()
+        loader.load('./hobby-of-night.ttf',fnt => font = fontLoader.parse(fnt)).then( () => {
+            try {
+                console.log("loaded font")
+                
+                const geometry = new self.THREE.TextGeometry( "Hello three.js!", {
+                    font: font,
+                    size: 80,
+                    height: 5,
+                } );
+
+                geometry.computeBoundingBox()
+                const material = new self.THREE.MeshPhongMaterial( { color: 0xff38b9, fog: false} ) // front
+
+                const centerOffset = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+                const mesh = new self.THREE.Mesh(geometry, material)
+                
+                mesh.position.x = centerOffset
+
+                self.scene.add(mesh)
+            } catch (e) {
+                console.error(e)
+            }
+        })
     }
 
     loadFont(data) {
