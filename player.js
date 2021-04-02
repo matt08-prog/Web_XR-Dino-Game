@@ -38,7 +38,7 @@ class Player {
                 console.log(this.score)
                 this.text.loadFont(this.score.toString().padStart(5, '0'))
             }
-        }, 50)
+        }, 300)
     }
 
     update(){
