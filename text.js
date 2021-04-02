@@ -1,3 +1,5 @@
+import { TTFLoader } from './jsm/loaders/TTFLoader.js'
+
 class Text {
     constructor(scene, camera, THREE) {
         this.THREE = THREE
@@ -35,7 +37,7 @@ class Text {
         //     self.loadFont(json)
         // });
         let font;
-        const loader = new this.THREE.TTFLoader()
+        const loader = new TTFLoader()
         const fontLoader = new this.THREE.FontLoader()
         loader.load('./libs/fonts/PressStart2P-Regular.ttf',fnt => font = fontLoader.parse(fnt)).then( () => {
             try {
