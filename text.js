@@ -34,6 +34,7 @@ class Text {
 
                 self.mesh = new self.THREE.Mesh(geometry, material)
                 
+                self.mesh.position.x = centerOffset
                 self.mesh.position.z = centerOffset
                 self.mesh.rotation.y = -Math.PI / 2
                 self.mesh.position.y = 8
