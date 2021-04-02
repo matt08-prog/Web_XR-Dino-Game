@@ -35,11 +35,11 @@ class Player {
         if (this.text.mesh) {
             if (this.text.first) {
                 this.text.first = false
-                this.text.mesh.x += (this.terrain.width * 2) - this.terrain.width / 2
+                this.text.mesh.position.x += (this.terrain.width * 2) - this.terrain.width / 2
             }
             console.log("mesh is real")
             this.text.mesh.x += 0.1 * this.playerSpeed
-            console.log(this.text.mesh.x += 0.1 * this.playerSpeed)
+            console.log(this.text.mesh.position.x += 0.1 * this.playerSpeed)
         }
 
         if (this.dolly.position.x > (this.terrain.width / 2) + this.pos) {
