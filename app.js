@@ -421,13 +421,13 @@ class App{
                         }
                         this.handleInput(this.controllers.right.controller)
                     }else if ( inputSource.handedness == 'left'){
-                        if(gp.axes[offset] > 0) {
-                            this.player.zPos = 5
-                            } else if (gp.axes[offset] < 0) {
-                                this.player.zPos = -5
-                            } else {
-                                this.player.zPos = 0
-                            }
+                        // if(gp.axes[offset] > 0) {
+                        //     this.player.zPos = 5
+                        //     } else if (gp.axes[offset] < 0) {
+                        //         this.player.zPos = -5
+                        //     } else {
+                        //         this.player.zPos = 0
+                        //     }
                     }
                 })
             }
