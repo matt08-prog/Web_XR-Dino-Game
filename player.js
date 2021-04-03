@@ -60,11 +60,6 @@ class Player {
         }
         //console.log(this.dolly.position.z)
         this.dolly.position.z = this.zPos
-        if(this.zPos > 0) {
-            this.spot = 6
-        } else if(this.zPos < 0) {
-            this.spot = 4
-        }
 
         if(this.floor && this.jump) {
             this.acceleration = 0.4
@@ -86,6 +81,13 @@ class Player {
             this.dolly.position.y = this.yPos
         }
 
+        if(this.zPos > 0) {
+            this.spot = 6
+        } else if(this.zPos < 0) {
+            this.spot = 4
+        } else {
+            this.spot = 5
+        }
         if(this.jump && this.spot > 3) {
             this.spot -= 3
         }
