@@ -411,7 +411,7 @@ class App{
 
                         if(gp.axes[offset] > 0) {
                             this.player.zPos = 5
-                            console.log("right 1")
+                            //console.log("right 1")
                         } else if (gp.axes[offset] < 0) {
                             this.player.zPos = -5
                             // console.log("right -1")
