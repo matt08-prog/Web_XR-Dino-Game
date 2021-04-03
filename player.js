@@ -89,6 +89,7 @@ class Player {
         if(this.jump && this.spot > 3) {
             this.spot -= 3
         }
+        console.log(this.spot)
     }
 }
 
