@@ -25,18 +25,18 @@ class Player {
         this.dolly.position.x += (this.terrain.width * 2) - this.terrain.width / 2
         this.dolly.position.z = 0
         this.pos = this.dolly.position.x
-        console.log("setup camera position")
+        //console.log("setup camera position")
         setInterval(() =>{
             this.playerSpeed += 0.2
             
-            console.log("increase speed")
+            //console.log("increase speed")
         }, 8350)
 
         setInterval (() => {
             this.score += 10
             //this.length = this.score.toString().length
             if(this.text) {
-                console.log(this.score)
+                //console.log(this.score)
                 this.text.loadFont(this.score.toString().padStart(5, '0'))
             }
         }, 100)

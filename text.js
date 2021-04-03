@@ -30,7 +30,7 @@ class Text {
         }
 
         try {
-            console.log("loaded font")
+            //console.log("loaded font")
             
             const geometry = new this.THREE.TextGeometry( "score:" + text, {
                 font: this.font,
