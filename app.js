@@ -22,7 +22,7 @@ const DEFAULT_PROFILE = 'generic-trigger';
 
 class App{
 	constructor(){
-        //test 1
+        //test 1 2
 		const container = document.createElement( 'div' );
 		document.body.appendChild( container );
         this.clock = new THREE.Clock();
